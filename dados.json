@@ -1,0 +1,19 @@
+[
+    {
+        "id": "armario-1",
+        "estado": "Aberto",
+        "color": "green"
+    },
+
+    {
+        "id": "armario-2",
+        "estado": "em uso",
+        "color": "red"
+    },
+
+    {
+        "id": "armario-3",
+        "estado": "manutenção",
+        "color": "yellow"
+    }
+]
