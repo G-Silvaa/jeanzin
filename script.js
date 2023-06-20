@@ -1,153 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
-
-* {
-    box-sizing: border-box;
-    font-family: 'Figtree', sans-serif;
-}
-
-body {
-    height: 100vh;
-    background-color: rgb(215, 215, 215);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    place-items: center;
-    margin: 0rem;
+function TextosApi() {
+  axios({
+    method: "GET",
+    url: "./dados.json",
+  }).then((response) => {
     
-}
-.logo{
-    margin-top: 10rem;
+    const logo2 = document.querySelector(".logo2");
+    const p1 = document.getElementById("p1");
+    const p2 = document.getElementById("p2");
+    const p3 = document.getElementById("p3");
+    const bloco1 = document.getElementById("bloco1");
+    const bloco2 = document.getElementById("bloco2");
+
+    namelogo = response.data[3].nameLogo;
+    stats = response.data[3].nameStatus;
+    stats2 = response.data[3].nameStatus2;
+    stats3 = response.data[3].nameStatus3;
+
+    logo2.textContent = namelogo;
+    p1.textContent = stats;
+    p2.textContent = stats2;
+    p3.textContent = stats3;
+    bloco1.textContent = response.data[3].bloco1;
+    bloco2.textContent = response.data[3].bloco2;
+  });
 }
 
-.quadrado{
-    margin-left: 10px;
+function CoresApi() {
+  axios({
+    method: "GET",
+    url: "./dados.json"
+  })
+  .then((response)=> {
+    const abertoIni = document.querySelector('.aberto')
+    const emUsoIni = document.querySelector('.em-uso')
+    const ManuIni = document.querySelector('.manutencao')
+
+    green = response.data[0].color
+    red = response.data[1].color
+    yellow = response.data[2].color
+
+    abertoIni.style.backgroundColor = `${green}`;
+    emUsoIni.style.backgroundColor = `${red}`;
+    ManuIni.style.backgroundColor = `${yellow}`;
+  })
 }
 
-.sinalizadores{
-    margin-top: 10px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    padding: 0.5rem 0.5rem;
-    gap: 0.5%;
+function estados() {
+  axios({
+    method: "GET",
+    url: "./dados.json",
+  }).then((response) => {
+    //    Estados
+
+    const buttons = document.querySelectorAll(".estado");
+
+    aberto = response.data[0].estado;
+    emUso = response.data[1].estado;
+    manutenção = response.data[2].estado;
+
+    buttons[0].innerHTML = aberto;
+    buttons[1].innerHTML = emUso;
+    buttons[2].innerHTML = manutenção;
+    buttons[3].innerHTML = aberto;
+    buttons[4].innerHTML = aberto;
+    buttons[5].innerHTML = aberto;
+    buttons[6].innerHTML = manutenção;
+    buttons[7].innerHTML = aberto;
+    buttons[8].innerHTML = aberto;
+    buttons[9].innerHTML = aberto;
+  });
 }
 
-.quadrado{
-    width: 10px;
-    height: 10px;
-    border: 1px solid #000;
-}
+function MudandoEstados() {
+  axios({
+    method: "GET",
+    url: "./dados.json",
+  }).then((response) => {
+    const aberto = response.data[0].estado;
+    const emUso = response.data[1].estado;
+    const manutencao = response.data[2].estado;
 
-.sinalizadores p{
-    font-size: 16px;
-    font-weight: bold;
-}
+    const nomes = [aberto, emUso, manutencao];
+    const cores = ["verde", "vermelho", "amarelo"];
+    let indice = 0;
 
-.bloco{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    align-items: center;
-}
+    function atualizarNome(botao) {
+      botao.textContent = nomes[indice];
+      botao.classList.remove("verde", "vermelho", "amarelo");
+      botao.classList.add(cores[indice]);
 
-.armarios{
-    width: 75%;
-    height: 75%;
-    display: flex;
-    justify-content: center;
-    place-items: center;
-    gap: 2%;
-    padding: 0.5rem 1rem;
-}
-
-.armario{
-    position: relative;
-    width: 250px;
-    border: 3px solid #000;
-    aspect-ratio: 10 / 14;
-    border-radius: 1rem;
-    background-color: rgb(0,0,0, 15%);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    justify-content: center;
-}
-
-.estado{
-    display: flex;
-    border: 3px solid #000;
-    width: 150px;
-    aspect-ratio: 16/5;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    box-shadow: 0px 0px 0px #000;
-    transition: .3s;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.estado:hover{
-    cursor: pointer;
-    box-shadow: -5px 5px 0px #000;
-    
-}
-
-.aberto{
-    background: green;
-}
-
-.em-uso{
-    background: red;
-}
-
-.manutencao{
-    background: yellow;
-}
-
-.verde{
-    background: green;
-}
-
-.vermelho{
-    background: red;
-}
-
-.amarelo{
-    background: yellow;
-}
-
-@media screen and (max-width: 400px) {
-   
-    .armarios{
-        width: 100%;
-        height: 75%;
-        display: flex;
-        justify-content: center;
-        place-items: center;
-        gap: 2%;
-        padding: 0.5rem 1rem;
+      indice = (indice + 1) % nomes.length;
     }
 
-    h3{
-        font-size: 14px;
-    }
+    const botoes = document.querySelectorAll(".meusBotoes");
 
-    button{
-        width: 3px;
-        height: 30px;
-        
-    }
-
-    .estado{
-        font-size: 9px;
-    }
-    
+    botoes.forEach((botao) => {
+      botao.addEventListener("click", function () {
+        atualizarNome(this);
+      });
+    });
+  });
 }
 
+TextosApi();
+CoresApi()
+estados();
+MudandoEstados();
