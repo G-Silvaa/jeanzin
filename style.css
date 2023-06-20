@@ -124,7 +124,9 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-   
+   body{
+    overflow: hidden;
+   }
     .armarios{
         width: 100%;
         height: 100%;
@@ -148,6 +150,10 @@ body {
 
     .estado{
         font-size: 9px;
+    }
+
+    .logo{
+        margin-top: 2rem;
     }
     
 }
