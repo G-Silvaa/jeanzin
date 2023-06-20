@@ -10,19 +10,20 @@
 </head>
 
 <body>
+    
     <div class="logo">
-        <h1><i>Sistema de armarios</i></h1>
+        <h1><i class="logo2"></i></h1>
     </div>
     <div class="sinalizadores">
         <div class="quadrado aberto"></div>
-        <p>- Aberto</p>
+        <p id="p1"></p>
         <div class="quadrado em-uso"></div>
-        <p>- Em uso</p>
+        <p  id="p2"></p>
         <div class="quadrado manutencao"></div>
-        <p>- Em manutenção</p>
+        <p  id="p3"></p>
     </div>
     <div class="bloco">
-        <h2>Bloco - 1</h2>
+        <h2 id="bloco1"></h2>
         <div class="armarios">
             <div class="armario">
                 <h3>Armario 1</h3>
@@ -47,7 +48,7 @@
         </div>
     </div>
     <div class="bloco">
-        <h2>Bloco - 2</h2>
+        <h2 id="bloco2"></h2>
         <div class="armarios">
             <div class="armario">
                 <h3>Armario 1</h3>
@@ -71,6 +72,10 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <h4>by: Jean Lima</h4>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
     
