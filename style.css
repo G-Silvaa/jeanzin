@@ -13,7 +13,7 @@ body {
     justify-content: center;
     place-items: center;
     margin: 0rem;
-    overflow: hidden;
+    
 }
 
 .sinalizadores{
@@ -92,9 +92,8 @@ body {
     
 }
 
-
 .aberto{
-    
+    background: green;
 }
 
 .em-uso{
@@ -102,5 +101,18 @@ body {
 }
 
 .manutencao{
-    
+    background: yellow;
 }
+
+.verde{
+    background: green;
+}
+
+.vermelho{
+    background: red;
+}
+
+.amarelo{
+    background: yellow;
+}
+
