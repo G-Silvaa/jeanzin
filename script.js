@@ -62,12 +62,12 @@ function estados() {
     buttons[1].innerHTML = emUso;
     buttons[2].innerHTML = manutenção;
     buttons[3].innerHTML = aberto;
-    buttons[4].innerHTML = aberto;
+    buttons[4].innerHTML = emUso;
     buttons[5].innerHTML = aberto;
     buttons[6].innerHTML = manutenção;
     buttons[7].innerHTML = aberto;
-    buttons[8].innerHTML = aberto;
-    buttons[9].innerHTML = aberto;
+    buttons[8].innerHTML = manutenção;
+    buttons[9].innerHTML = emUso;
   });
 }
 
